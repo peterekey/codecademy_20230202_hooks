@@ -1,25 +1,71 @@
-import logo from './logo.svg';
-import './App.css';
+// import React, { useState } from 'react';
+// import './App.css';
 
-function App() {
+// export default function ColorPicker() {
+//   const [color, setColor] = useState();
+
+//   const divStyle = {backgroundColor: 'purple'};
+
+//   const handleChange = (props) => {
+//     color = props.target.value;
+//     console.log(color)
+//     setColor = color;
+//     console.log(props.setColor);
+//   }
+
+// return (
+//   <div style={divStyle}>
+//     <p>The color is {color}</p>
+    
+//     <button onClick={(e) => {handleChange}}>
+//       Aquamarine
+//     </button>
+    
+//     <button onClick={(e) => setColor({handleChange})}>
+//       BlueViolet
+//     </button>
+    
+//     <button>
+//       Chartreuse
+//     </button>
+    
+//     <button>
+//       CornflowerBlue
+//     </button>
+//   </div>
+//   );
+// }
+
+// import the default export and the named export `useState` from the 'react' library
+import React, { useState } from 'react';
+
+export default function ColorPicker() {
+  // call useState and assign its return values to `color` and `setColor`
+  const [color, setColor] = useState();
+
+  const divStyle = {backgroundColor: color};
+
+  const handleClick = (e) => {
+    let chosenColour = e.target.innerText;
+    console.log(`The value is ${chosenColour}`);
+    setColor(chosenColour);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={divStyle}>
+      <p>The color is {color}</p>
+      <button onClick={handleClick}>
+        Aquamarine
+      </button>
+      <button onClick={handleClick}>
+        BlueViolet
+      </button>
+      <button onClick={() => setColor("Chartreuse")}>
+        Chartreuse
+      </button>
+      <button onClick={() => setColor("CornflowerBlue")}>
+        CornflowerBlue
+      </button>
     </div>
   );
 }
-
-export default App;
